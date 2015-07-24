@@ -180,8 +180,19 @@ The classes available for working with locale are:
 - `NSTimeZone`
 - `NSString`
 
-## Calendrical Calculations
-Use `NSCalendar` for any calendrical calculations. One day is not equal to 86,400 seconds, for example.
+## Calendar
+Use `NSCalendar` for any calendrical calculations such as:
+- number of days in a month
+- components of a date
+- delta computations
+
+`NSDate` is a point in time and must be interpreted using an `NSCalendar`.
+
+```
+NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit fromDate:[NSDate date]];
+NSInteger day = [components day];
+NSInteger month = [components month];
+```
 ## Images and Audio
 Assets and other miscellaneous files can be localized by putting them in `.lproj` directories. The correct assets will be loaded when using standard APIs, including:
 - `imageNamed:`
