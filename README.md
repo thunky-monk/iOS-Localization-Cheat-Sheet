@@ -201,13 +201,13 @@ Assets and other miscellaneous files can be localized by putting them in `.lproj
 
 ## Unicode
 Glyphs and characters have a many-to-many relationship. Operate on ranges, not characters, using standard APIs such as:
-- `rangeOfComposedCharacterSequence`
-- `enumerateSubstringsInRange`
+- `rangeOfComposedCharacterSequenceAtIndex:`
+- `enumerateSubstringsInRange:options:usingBlock:` with options like `NSEnumerationByComposedCharacterSequences`
 - `rangeOfString:options:range:locale:`
 - `localizedStringCompare:`
 
 ## Sorting
-Different languages have different sort orders and sometimes characters are considered as groups. Use `localizedStringCompare` for any user strings.
+Different languages have different sort orders and sometimes characters are considered as groups. Use `localizedStringCompare:` for any user strings.
 ## Text Input
 Text is not always input letter by letter. In some languages, like Chinese, “marked” text is used and final character forms are picked from suggestions. Operate on text as it changes, instead of keystroke by keystroke. 
 ## Sources
