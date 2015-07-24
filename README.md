@@ -138,12 +138,18 @@ NSString *name;
 [url getResourceValue:&name forKey:NSURLLocalizedTypeDescriptionKey error:NULL];
 NSLog(@“localized name: %@“, name);
 ```
+## Numbers
+Use `NSNumberFormatter`.
+
+For pre-set styles, use `localizedStringFromNumber:numberStyle`.
+## Dates
+Use `NSDateFormatter`. 
+
+For pre-set styles, use `localizedStringFromDate:dateStyle:timeStyle:`. 
+
+For custom date and time styles, use `dateFormatFromTemplate:options:locale:`.
 ## Formatters
-For numbers, use `NSNumberFormatter`.
-
-For dates, use `NSDateFormatter`. For custom date and time styles, use `dateFormatFromTemplate:options:locale:` so that `NSDateFormatter` can figure out the correct format string based on the locale.  
-
-Note that formatters are not thread safe. Using them from multiple threads is safe, but mutating them is not.
+Formatters are not thread safe. Using them from multiple threads is safe, but mutating them is not.
 
 Caching formatters may be a good idea since creating them is a relatively expensive operation.
 ## Debugging
