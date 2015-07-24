@@ -12,17 +12,17 @@ Use these macros to take advantage of [genstrings](https://developer.apple.com/l
 All use NSBundle’s `localizedStringForKey:value:table:`
 
 [genstrings](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html) usage:
-```
+```bash
 find . -name *.m | xargs genstrings -o en.lproj
 ```
 Use `-o` to specify output directory; “Localizable.strings” is default. Use `-a` to append.
 
 For the localized string   
-```  
+```objc  
 NSLocalizedString(@“session-player.leave-session”, @“Session player leave session”)  
 ```
 the associated strings files has an entry
-```  
+```
 /* Session player leave session */
 “session-player.leave-session” = “Leave Session”;  
 ```
@@ -34,18 +34,18 @@ For example, the Fitbit app might show the strings `“You challenged Charlie“
 Use an name-spaced approach for string keys such that they are unique for each context. Do not use a base language for keys.
 
 Each key is unique within a strings file. Thus, something that is unique in the base language becomes unique in all other languages, even when inappropriate. For example, in English, “run” can be used as a both a noun and a verb. In other languages, this may not be the case. It may be tempting to have
-```  
-NSLocalizedString(“Run”, nil)  
+```objc  
+NSLocalizedString(“Run”, nil);  
 ```
 However, this will result in a single entry in the strings file. Instead, do:
-```
-NSLocalizedString(“session.title.run”, nil)
-NSLocalizedString(“precession.start.run”, nil)
+```objc
+NSLocalizedString(“session.title.run”, nil);
+NSLocalizedString(“precession.start.run”, nil);
 ```
 so that the strings files have a key for each context.
 ## Format Strings 
 To localize strings built at runtime:
-```
+```objc
 [NSString localizedStringWithFormat:NSLocalizedString(@“session.component.reps.%lu out of reps %lu completed”, nil), completedReps, totalReps];
 ```
 A translator can reorganize the format specifiers by referring to them using `%1$lu` and `%2$lu` in the strings file.
@@ -53,11 +53,11 @@ A translator can reorganize the format specifiers by referring to them using `%1
 Consider the example `@“%lu sessions”`. To appropriately handle plurals in English, there would need to be two different strings: `@“%lu sessions”` for when there are more than one session and `@“%lu session”` for when there is only one session. However, [other languages have different rules](http://www.unicode.org/cldr/charts/latest/supplemental/language_plural_rules.html).
 
 To handle the complexity, we will use the typical `.strings` entry, normally generated like so:
-```
+```objc
 [NSString localizedStringWithFormat:NSLocalizedString(@“profile.sessions-count.%lu sessions”, nil), completedReps, totalReps];
 ```
 and a `.stringsdict.` `plist` file with the same name:
-```
+```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
 <!DOCTYPE plist PUBLIC “-//Apple//DTD PLIST 1.0//EN” “http://www.apple.com/DTDs/PropertyList-1.0.dtd”>
 <plist version=“1.0”>
@@ -91,7 +91,7 @@ Completed runs    Total Runs    Output
 2+                2+            x of y runs completed
 ```
 The `.stringsdict` would be:
-```
+```xml
 <?xml version=“1.0” encoding=“UTF-8”?>
 <!DOCTYPE plist PUBLIC “-//Apple//DTD PLIST 1.0//EN” “http://www.apple.com/DTDs/PropertyList-1.0.dtd”>
 <plist version=“1.0”>
@@ -132,7 +132,7 @@ The `.stringsdict` would be:
 To perform upper and lower casing, use `NSString`’s `lowercaseStringWithLocale:` and `uppercaseStringWithLocale:`.
 ## File Paths
 Retrieve localized file paths using `NSURL`:
-```
+```objc
 NSURL *url = [NSURL fileURLWithPath:@“/Applications/System Preferences.app”];
 NSString *name;
 [url getResourceValue:&name forKey:NSURLLocalizedTypeDescriptionKey error:NULL];
@@ -165,7 +165,7 @@ In user defaults:
 To check string files for syntax errors, use [plutil](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/plutil.1.html). 
 ## Locale
 The systemwide `[NSLocale currentLocale]` might not be the one the app is using. If the user’s system is set to Valyrian, but the app only supports English and Spanish, it will use the default language. Using the systemwide locale with a date formatter will result in a date formatted for that locale but the rest of the app will be in the default language. To use the language chosen by the app:
-```
+```objc
 NSString *localization = [NSBundle mainBundle].preferredLocalizations.firstObject;
 NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localization];  
 ```
@@ -188,7 +188,7 @@ Use `NSCalendar` for any calendrical calculations such as:
 
 `NSDate` is a point in time and must be interpreted using an `NSCalendar`.
 
-```
+```objc
 NSDateComponents *components = [[NSCalendar currentCalendar] components:NSDayCalendarUnit | NSMonthCalendarUnit fromDate:[NSDate date]];
 NSInteger day = [components day];
 NSInteger month = [components month];
