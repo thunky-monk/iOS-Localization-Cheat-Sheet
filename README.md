@@ -168,7 +168,11 @@ You can inspect locale instance properties, such as `NSLocaleUsesMetricSystem` u
 ## Calendrical Calculations
 Use `NSCalendar` for any calendrical calculations. One day is not equal to 86,400 seconds, for example.
 ## Images and Audio
-Assets can be localized by putting them in `.lproj` directories. The correct assets will be loaded when using standard APIs, including `imageNamed:`, `soundNamed:`, and `URLForResource…`.
+Assets and other miscellaneous files can be localized by putting them in `.lproj` directories. The correct assets will be loaded when using standard APIs, including:
+- `imageNamed:`
+- `soundNamed:`
+- `URLForResource:withExtension:`
+
 ## Unicode
 Glyphs and characters have a many-to-many relationship. Operate on ranges, not characters, using standard APIs such as:
 - `rangeOfComposedCharacterSequence`
