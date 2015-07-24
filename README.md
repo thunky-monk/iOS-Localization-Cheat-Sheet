@@ -165,6 +165,15 @@ NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:localization];
 ```
 
 You can inspect locale instance properties, such as `NSLocaleUsesMetricSystem` using `objectForKey:`.
+
+The classes available for working with locale are:
+- `NSLocale`
+- `NSDateFormatter`
+- `NSNumberFormatter`
+- `NSCalendar`
+- `NSTimeZone`
+- `NSString`
+
 ## Calendrical Calculations
 Use `NSCalendar` for any calendrical calculations. One day is not equal to 86,400 seconds, for example.
 ## Images and Audio
