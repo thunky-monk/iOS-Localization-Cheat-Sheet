@@ -202,7 +202,7 @@ Assets and other miscellaneous files can be localized by putting them in `.lproj
 ## Unicode
 Glyphs and characters have a many-to-many relationship. Operate on ranges, not characters, using standard APIs such as:
 - `rangeOfComposedCharacterSequenceAtIndex:`
-- `enumerateSubstringsInRange:options:usingBlock:` with options like `NSEnumerationByComposedCharacterSequences`
+- `enumerateSubstringsInRange:options:usingBlock:` with options like `NSStringEnumerationByComposedCharacterSequences`
 - `rangeOfString:options:range:locale:`
 - `localizedStringCompare:`
 
