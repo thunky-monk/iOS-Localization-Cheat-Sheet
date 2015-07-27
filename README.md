@@ -173,6 +173,8 @@ let formatter = NSPersonNameComponentsFormatter()
 formatter.style = .Short
 formatter.stringFromPersonNameComponents(components)
 ```
+## Physical Measurements
+Use `NSEnergyFormatter`, `NSLengthFormatter` and `NSMassFormatter`.
 ## Formatters
 Formatters are not thread safe. Using them from multiple threads is safe, but mutating them is not.
 
