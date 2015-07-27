@@ -234,7 +234,7 @@ Glyphs and characters have a many-to-many relationship. Operate on ranges, not c
 ## Sorting
 Different languages have different sort orders and sometimes characters are considered as groups. Use `localizedStringCompare:` for any user strings.
 ## Text Input
-Text is not always input letter by letter. In some languages, like Chinese, “marked” text is used and final character forms are picked from suggestions. Operate on text as it changes, instead of keystroke by keystroke. 
+Text is not always input letter by letter. In some languages, like Chinese, “marked” text is used and final character forms are picked from suggestions. Operate on text as it changes, instead of keystroke by keystroke. Inspect, but never change, `markedText`.
 ## Sources
 - http://nshipster.com/nslocalizedstring/
 - http://www.objc.io/issues/9-strings/string-localization/
