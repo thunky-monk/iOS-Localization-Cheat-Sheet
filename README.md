@@ -280,6 +280,10 @@ UIKeyboardAnimationDurationUserInfoKey
 ## Directionality
 Use `NSTextAlignmentNatural` and `NSWritingDirectionNatural` whenever possible.
 For complex cases, the translator should add left-to-right or right-to-left Unicode marks to localized strings.
+## Searching Localized Strings
+Use `localizedStandardRangeOfString:` and `localizedStandardContainsString:` in order to account for localized strings.
+## Transforming Localized Strings
+Use `stringByApplyingTransform:reverse:` to transform to a different script.
 ## Sources
 - http://nshipster.com/nslocalizedstring/
 - http://www.objc.io/issues/9-strings/string-localization/
