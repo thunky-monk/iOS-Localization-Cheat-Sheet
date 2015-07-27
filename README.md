@@ -148,6 +148,17 @@ Use `NSDateFormatter`.
 For pre-set styles, use `localizedStringFromDate:dateStyle:timeStyle:`. 
 
 For custom date and time styles, use `dateFormatFromTemplate:options:locale:`.
+## Names
+Use `NSPersonNameComponents` and `NSPersonNameComponentsFormatter` to display names.
+
+```swift
+let components = NSPersonNameComponents()
+components.givenName = "Charlie"
+components.familyName = "Mace"
+let formatter = NSPersonNameComponentsFormatter()
+formatter.style = .Short
+formatter.stringFromPersonNameComponents(components)
+```
 ## Formatters
 Formatters are not thread safe. Using them from multiple threads is safe, but mutating them is not.
 
