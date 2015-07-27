@@ -205,6 +205,34 @@ The classes available for working with locale are:
 - `NSTimeZone`
 - `NSString`
 
+## Current Language
+```objc
+[[NSBundle mainBundle] preferredLocalizations].firstObject;
+```
+## Localized Currency Name
+```objc
+NSLocale *localizationLocale = [NSLocale localeWithLocaleIdentifier:currentLocalization];
+NSString *yuanName = [localizationLocale displayNameForKey:NSLocaleCurrencyCode value: @“CNY”];
+```
+## Localized Quotations
+```objc
+NSLocale *localizationLocale = [NSLocale localeWithLocaleIdentifier:currentLocalization];
+NSString *beginQuote = [localizationLocale displayNameForKey:NSLocaleQuotationBeginDelimiterKey];
+NSString *endQuote = [localizationLocale displayNameForKey:NSLocaleQuotationEndDelimiterKey];
+```
+## Locale Change
+Use `autoUpdatingCurrentLocale` instead of `currentLocale`. The standard locale-dependent APIs will handle updates.
+
+For custom formatter templates, the listen for `NSCurrentLocaleDidChangeNotification` notifications. An example of responding to the notification:
+```objc
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(userChangedLocale:) name:NSCurrentLocaleDidChangeNotification object:nil];
+
+- (void)userChangedLocale:(NSNotification *)notification {
+	formatter.locale = [NSLocale currentLocale]; // not using `autoUpdatingCurrentLocale`
+	formatter.dateFormat = [NSDateFormatter dateFormatFromTemplate:template options:0 locale:formatter.locale];
+	[view setNeedsDisplay];
+}
+```
 ## Calendar
 Use `NSCalendar` for any calendrical calculations such as:
 - number of days in a month
