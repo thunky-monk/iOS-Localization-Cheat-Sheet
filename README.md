@@ -128,6 +128,20 @@ The `.stringsdict` would be:
 </dict>
 </plist>
 ```
+## Variable Width Rules
+Often it makes sense to change text based on available layout width. Use a `.stringsdict` file to do so.
+```xml
+<key>Motivation</key>
+    <dict>
+        <key>NSStringVariableWidthRuleType</key>
+        <dict>
+            <key>20</key>
+			<string>Get er done</string>
+			<key>50</key>
+			<string>Make it happen, you're a champion</string>
+		</dict>
+	</dict>
+```
 ## Casing
 To perform upper and lower casing, use `lowercaseStringWithLocale:` and `uppercaseStringWithLocale:` or the convenience methods `localizedUppercaseString` and `localizedLowercaseString`.
 ## File Paths
