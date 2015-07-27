@@ -157,7 +157,7 @@ Use `NSNumberFormatter`.
 
 For pre-set styles, use `localizedStringFromNumber:numberStyle`.
 ## Dates
-Use `NSDateFormatter`. 
+Use `NSDateFormatter`, `NSDatesComponentsFormatter`, `NSDateIntervalFormatter`.
 
 For pre-set styles, use `localizedStringFromDate:dateStyle:timeStyle:`. 
 
