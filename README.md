@@ -129,7 +129,7 @@ The `.stringsdict` would be:
 </plist>
 ```
 ## Casing
-To perform upper and lower casing, use `NSString`’s `lowercaseStringWithLocale:` and `uppercaseStringWithLocale:`.
+To perform upper and lower casing, use `lowercaseStringWithLocale:` and `uppercaseStringWithLocale:` or the convenience methods `localizedUppercaseString` and `localizedLowercaseString`.
 ## File Paths
 Retrieve localized file paths using `NSURL`:
 ```objc
