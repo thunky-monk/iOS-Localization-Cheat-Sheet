@@ -1,5 +1,5 @@
-# Localization Fake Book
-Fake book for localization on Apple platforms. Most examples are plundered from [elswhere](https://github.com/hamsterdam/LocalizationFakeBook#sources).
+# Localization Cheat Sheet
+Cheat Sheet for localization on Apple platforms. Most examples are plundered from [elswhere](https://github.com/hamsterdam/iOS-Localization-Cheat-Sheet#sources).
 
 ## NSLocalizedString
 Use these macros to take advantage of [genstrings](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man1/genstrings.1.html):
